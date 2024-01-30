@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de Temps Restant</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url(beauzac.jpg); /* Remplacez 'votre_image.jpg' par le chemin de votre image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        h1 {
+            color: #ffffff; /* Couleur du titre */
+        }
+        #countdown {
+            font-size: 10em;
+            font-weight: bold;
+            color: #af4c99; /* Couleur verte pour le style */
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>Compteur de Temps Restant</h1> -->
+    <div id="countdown">0 jours 00:00:00</div>
+
+    <script>
+        function mettreAJourCompteur() {
+            // Définissez la date cible
+            const dateCible = new Date('2024-02-02T21:00:00');
+            
+            // Obtenez la date actuelle
+            const dateActuelle = new Date();
+
+            // Calculez la différence entre la date cible et la date actuelle
+            let difference = Math.max(dateCible - dateActuelle, 0);
+
+            // Convertissez la différence en jours, heures, minutes et secondes
+            const joursRestants = Math.floor(difference / (1000 * 60 * 60 * 24));
+            difference %= (1000 * 60 * 60 * 24);
+            
+            const heuresRestantes = Math.floor(difference / (1000 * 60 * 60));
+            difference %= (1000 * 60 * 60);
+            
+            const minutesRestantes = Math.floor(difference / (1000 * 60));
+            difference %= (1000 * 60);
+            
+            const secondesRestantes = Math.floor(difference / 1000);
+
+            // Affichez le résultat sur la page
+            document.getElementById('countdown').textContent = `${joursRestants} jours ${heuresRestantes.toString().padStart(2, '0')}:${minutesRestantes.toString().padStart(2, '0')}:${secondesRestantes.toString().padStart(2, '0')}`;
+        }
+
+        // Mettez à jour le compteur chaque seconde
+        setInterval(mettreAJourCompteur, 1000);
+
+        // Appelez la fonction une fois au chargement de la page
+        mettreAJourCompteur();
+    </script>
+</body>
+</html>
