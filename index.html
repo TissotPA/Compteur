@@ -56,7 +56,7 @@
             const secondesRestantes = Math.floor(difference / 1000);
 
             // Déterminez le texte pour les jours
-            const texteJours = (joursRestants === 1) ? 'jour' : 'jours';
+            const texteJours = (joursRestants <= 1) ? 'jour' : 'jours';
 
             // Affichez le résultat sur la page
             document.getElementById('countdown').textContent = `${joursRestants} ${texteJours} ${heuresRestantes.toString().padStart(2, '0')}:${minutesRestantes.toString().padStart(2, '0')}:${secondesRestantes.toString().padStart(2, '0')}`;
